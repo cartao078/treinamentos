@@ -867,6 +867,31 @@
 
         // Inicializar
         updateSlide();
+
+        // Sistema de auto-hide dos controles
+        let mouseTimer;
+        let isMouseMoving = false;
+
+        function showControls() {
+            document.body.classList.add('mouse-moving');
+            isMouseMoving = true;
+        }
+
+        function hideControls() {
+            document.body.classList.remove('mouse-moving');
+            isMouseMoving = false;
+        }
+
+        document.addEventListener('mousemove', () => {
+            showControls();
+            clearTimeout(mouseTimer);
+            mouseTimer = setTimeout(() => {
+                hideControls();
+            }, 3000); // Esconde após 3 segundos sem movimento
+        });
+
+        // Mostra controles quando mouse sai da tela e volta
+        document.addEventListener('mouseenter', showControls);
     </script>
 </body>
 </html>
