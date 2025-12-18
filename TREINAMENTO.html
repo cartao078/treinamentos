@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Treinamento Refuturiza</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #1a2a6c 0%, #b21f1f 50%, #fdbb2d 100%);
+    overflow-x: hidden;
         }
 
         .container {
@@ -47,7 +49,15 @@
             }
         }
 
-        .slide-capa {
+        .keyword {
+            background: #fff3cd;
+            color: #856404;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .slide.slide-capa {
             background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
             color: white;
             text-align: center;
@@ -82,8 +92,8 @@
         }
 
         p, li {
-            font-size: 1.2em;
-            line-height: 1.8;
+            font-size: 1.05em;
+            line-height: 1.6;
             color: #444;
             margin-bottom: 15px;
         }
@@ -99,7 +109,7 @@
         .highlight p {
             color: #222;
             font-weight: 600;
-            font-size: 1.3em;
+            font-size: 1.15em;
         }
 
         .objecao-box {
@@ -220,8 +230,9 @@
 
         .slides-wrapper {
             position: relative;
+            width: 100%;
+            height: 100vh; /* trava no tamanho da tela */
             overflow: hidden;
-            height: 100vh;
         }
 
         .slide {
@@ -229,24 +240,30 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%; /* Ocupa a altura total disponível */
+            height: 100%;
+            padding: 40px;
+            overflow-y: auto; /* 🔥 ISSO RESOLVE O ZOOM */
             opacity: 0;
-            transform: translateX(100%);
-            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            visibility: hidden;
+            transform: translateX(50px);
+            transition: all 0.5s ease-in-out;
             pointer-events: none;
-            overflow-y: auto; /* Adiciona scroll interno se o texto for maior que a tela */
-            padding: 40px; /* Reduzi um pouco o padding para ganhar espaço */
+            background: white;
+            border-radius: 20px;
         }
 
         .slide.active {
             opacity: 1;
+            visibility: visible;
             transform: translateX(0);
             pointer-events: all;
-            position: relative;
+            z-index: 10;
         }
 
         .slide.prev {
-            transform: translateX(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50px);
         }
 
         .navegacao {
@@ -546,19 +563,38 @@
         <div class="slide" data-slide="7">
             <div class="slide-number">Slide 8</div>
             <h2>🎭 Objeção #4: "Já Tenho Cursos Grátis"</h2>
-            
+    
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <tr style="background: #eee;">
+                    <th style="padding: 15px; text-align: left;">Recurso</th>
+                    <th style="padding: 15px; text-align: center;">Cursos Grátis (Internet)</th>
+                    <th style="padding: 15px; text-align: center; background: #FF6B35; color: white;">Passaporte Refuturiza</th>
+                </tr>
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #eee;">Certificado Válido</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #eee; text-align: center;">❌ Raro/Pago</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #eee; text-align: center;">✅ Incluso (+1.300)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px; border-bottom: 1px solid #eee;">Teste Comportamental</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #eee; text-align: center;">❌ Não tem</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #eee; text-align: center;">✅ Teste DISC Completo</td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px;">Vagas Exclusivas</td>
+                    <td style="padding: 12px; text-align: center;">❌ Não tem</td>
+                    <td style="padding: 12px; text-align: center;">✅ Ecossistema de Emprego</td>
+                </tr>
+            </table>
+
             <div class="objecao-box">
-                <h4>🆓 Cliente diz: "Na internet tem curso grátis"</h4>
-                
                 <div class="resposta">
-                    <strong>✅ RESPOSTA ASSERTIVA:</strong>
-                    <p>"Verdade! Tem mesmo. Posso te perguntar uma coisa? Quantos desses cursos grátis você já completou e aplicou na prática?"</p>
-                    
-                    <p style="margin-top: 15px;"><strong>Após a resposta:</strong></p>
-                    <p>"Exatamente! Sabe por quê? Porque quando é grátis, a gente não valoriza. Mas o diferencial aqui não são só os cursos. É o teste DISC que te mostra QUAL caminho seguir, é a orientação de carreira, é ter tudo em um só lugar organizado, é o acesso às vagas exclusivas, é a educação financeira. É um ECOSSISTEMA completo. Você tá comparando uma Ferrari com uma bicicleta! Por R$ 0,50 centavos por dia, qual faz mais sentido?"</p>
+                    <strong>✅ RESPOSTA MATADORA:</strong>
+                    <p>"Verdade, tem muito curso solto por aí. Mas me diz: **adianta ter as peças de um motor espalhadas ou você prefere o carro pronto para dirigir?** Por R$ 0,50 por dia, você não compra só cursos, você compra um atalho para o seu novo emprego."</p>
                 </div>
             </div>
         </div>
+        
 
         <!-- SLIDE 9: TÉCNICAS DE FECHAMENTO -->
         <div class="slide" data-slide="8">
