@@ -15,26 +15,25 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             overflow-x: hidden;
-            cursor: none; /* Esconde cursor em modo apresentação */
-        }
-
-        body.mouse-moving {
-            cursor: default; /* Mostra cursor quando mouse se move */
         }
 
         .container {
-            max-width: 100%;
-            margin: 0;
-            padding: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
         .slide {
             background: white;
-            border-radius: 0;
-            padding: 40px 60px 120px 60px;
-            margin: 0;
-            box-shadow: none;
-            min-height: auto;
+            border-radius: 20px;
+            padding: 60px;
+            margin: 20px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: slideIn 0.5s ease-out;
         }
 
         @keyframes slideIn {
@@ -56,7 +55,7 @@
 
         h1 {
             font-size: 2.8em;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -64,142 +63,142 @@
 
         h2 {
             font-size: 2em;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             color: #FF6B35;
             font-weight: 700;
         }
 
         .slide-capa h2 {
             color: white;
-            font-size: 1.6em;
+            font-size: 2em;
             font-weight: 400;
         }
 
         h3 {
-            font-size: 1.5em;
-            margin: 25px 0 12px 0;
+            font-size: 1.8em;
+            margin: 30px 0 15px 0;
             color: #333;
             font-weight: 600;
         }
 
         p, li {
-            font-size: 1.05em;
-            line-height: 1.6;
+            font-size: 1.2em;
+            line-height: 1.8;
             color: #444;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .highlight {
             background: linear-gradient(120deg, #FFE66D 0%, #FF6B35 100%);
             padding: 20px;
-            border-radius: 12px;
-            margin: 20px 0;
-            border-left: 5px solid #FF6B35;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 6px solid #FF6B35;
         }
 
         .highlight p {
             color: #222;
             font-weight: 600;
-            font-size: 1.1em;
+            font-size: 1.3em;
         }
 
         .objecao-box {
             background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 15px 0;
-            border-left: 4px solid #FF6B35;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #FF6B35;
         }
 
         .objecao-box h4 {
             color: #FF6B35;
-            font-size: 1.2em;
-            margin-bottom: 12px;
+            font-size: 1.4em;
+            margin-bottom: 15px;
             font-weight: 700;
         }
 
         .resposta {
             background: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 12px;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
             border: 2px solid #e9ecef;
         }
 
         .resposta strong {
             color: #28a745;
-            font-size: 1em;
+            font-size: 1.1em;
         }
 
         ul {
-            margin-left: 25px;
-            margin-top: 15px;
+            margin-left: 30px;
+            margin-top: 20px;
         }
 
         li {
-            margin-bottom: 12px;
+            margin-bottom: 20px;
         }
 
         .produto-destaque {
             background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
             color: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin: 20px 0;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px 0;
             text-align: center;
         }
 
         .produto-destaque h3 {
             color: white;
-            font-size: 1.8em;
-            margin-bottom: 15px;
+            font-size: 2.2em;
+            margin-bottom: 20px;
         }
 
         .produto-destaque ul {
             list-style: none;
-            margin: 15px 0;
+            margin: 20px 0;
         }
 
         .produto-destaque li {
             color: white;
-            font-size: 1em;
-            padding: 8px;
-            margin: 8px 0;
+            font-size: 1.15em;
+            padding: 10px;
+            margin: 10px 0;
         }
 
         .produto-destaque li:before {
             content: "✓ ";
             font-weight: bold;
-            margin-right: 8px;
-            font-size: 1.2em;
+            margin-right: 10px;
+            font-size: 1.3em;
         }
 
         .preco {
-            font-size: 2.5em;
+            font-size: 3em;
             font-weight: 800;
-            margin: 20px 0;
+            margin: 25px 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .nota {
-            font-size: 0.85em;
+            font-size: 0.9em;
             font-style: italic;
-            margin-top: 12px;
+            margin-top: 15px;
             opacity: 0.9;
         }
 
         .dica-box {
             background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
             color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
         }
 
         .dica-box h4 {
             color: white;
-            margin-bottom: 12px;
-            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-size: 1.5em;
         }
 
         .dica-box p {
@@ -208,15 +207,15 @@
 
         .erro-comum {
             background: #ffe5e5;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border-left: 4px solid #dc3545;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #dc3545;
         }
 
         .erro-comum h4 {
             color: #dc3545;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .slides-wrapper {
@@ -230,16 +229,13 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
-            overflow-y: auto;
+            height: 100%; /* Ocupa a altura total disponível */
             opacity: 0;
             transform: translateX(100%);
             transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             pointer-events: none;
-            padding: 40px 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+            overflow-y: auto; /* Adiciona scroll interno se o texto for maior que a tela */
+            padding: 40px; /* Reduzi um pouco o padding para ganhar espaço */
         }
 
         .slide.active {
@@ -253,16 +249,6 @@
             transform: translateX(-100%);
         }
 
-        .slide-content {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
         .navegacao {
             position: fixed;
             bottom: 40px;
@@ -272,6 +258,12 @@
             display: flex;
             gap: 20px;
             align-items: center;
+            opacity: 0; /* Invisível */
+            transition: opacity 0.3s ease; /* Transição suave */
+        }
+
+        .navegacao.visible {
+            opacity: 1;
         }
 
         .btn-nav {
@@ -870,33 +862,25 @@
             }
         }
 
-        // Inicializar
-        updateSlide();
-
-        // Sistema de auto-hide dos controles
-        let mouseTimer;
-        let isMouseMoving = false;
-
-        function showControls() {
-            document.body.classList.add('mouse-moving');
-            isMouseMoving = true;
-        }
-
-        function hideControls() {
-            document.body.classList.remove('mouse-moving');
-            isMouseMoving = false;
-        }
+        let navTimeout;
+        const navContainer = document.querySelector('.navegacao');
 
         document.addEventListener('mousemove', () => {
-            showControls();
-            clearTimeout(mouseTimer);
-            mouseTimer = setTimeout(() => {
-                hideControls();
-            }, 3000); // Esconde após 3 segundos sem movimento
-        });
+        // Mostra os botões
+        navContainer.classList.add('visible');
+    
+        // Limpa o timer anterior
+            clearTimeout(navTimeout);
+    
+        // Esconde após 3 segundos de inatividade
+        navTimeout = setTimeout(() => {
+        navContainer.classList.remove('visible');
+        }, 3000);
+        
+});
 
-        // Mostra controles quando mouse sai da tela e volta
-        document.addEventListener('mouseenter', showControls);
+        // Inicializar
+        updateSlide();
     </script>
 </body>
 </html>
