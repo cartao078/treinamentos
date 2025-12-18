@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Refuturiza</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .slide {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            margin: 20px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-capa {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #FF6B35;
+            font-weight: 700;
+        }
+
+        .slide-capa h2 {
+            color: white;
+            font-size: 2em;
+            font-weight: 400;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            margin: 30px 0 15px 0;
+            color: #333;
+            font-weight: 600;
+        }
+
+        p, li {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #FFE66D 0%, #FF6B35 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 6px solid #FF6B35;
+        }
+
+        .highlight p {
+            color: #222;
+            font-weight: 600;
+            font-size: 1.3em;
+        }
+
+        .objecao-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #FF6B35;
+        }
+
+        .objecao-box h4 {
+            color: #FF6B35;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .resposta {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border: 2px solid #e9ecef;
+        }
+
+        .resposta strong {
+            color: #28a745;
+            font-size: 1.1em;
+        }
+
+        ul {
+            margin-left: 30px;
+            margin-top: 20px;
+        }
+
+        li {
+            margin-bottom: 20px;
+        }
+
+        .produto-destaque {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .produto-destaque h3 {
+            color: white;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .produto-destaque ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .produto-destaque li {
+            color: white;
+            font-size: 1.15em;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .produto-destaque li:before {
+            content: "✓ ";
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.3em;
+        }
+
+        .preco {
+            font-size: 3em;
+            font-weight: 800;
+            margin: 25px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .nota {
+            font-size: 0.9em;
+            font-style: italic;
+            margin-top: 15px;
+            opacity: 0.9;
+        }
+
+        .dica-box {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+
+        .dica-box h4 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .dica-box p {
+            color: white;
+        }
+
+        .erro-comum {
+            background: #ffe5e5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #dc3545;
+        }
+
+        .erro-comum h4 {
+            color: #dc3545;
+            margin-bottom: 10px;
+        }
+
+        .slides-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            pointer-events: none;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: all;
+            position: relative;
+        }
+
+        .slide.prev {
+            transform: translateX(-100%);
+        }
+
+        .navegacao {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .btn-nav {
+            background: rgba(255,107,53,0.95);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(255,107,53,0.4);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255,107,53,0.6);
+            background: rgba(255,107,53,1);
+        }
+
+        .btn-nav:active {
+            transform: translateY(-2px) scale(1);
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #FF6B35, #FF8C42);
+            transition: width 0.3s ease;
+            z-index: 1001;
+            box-shadow: 0 2px 10px rgba(255,107,53,0.5);
+        }
+
+        .slide-counter {
+            background: rgba(255,255,255,0.95);
+            color: #FF6B35;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1em;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: rgba(255,107,53,0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        .fullscreen-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(255,107,53,0.9);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3em;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(255,107,53,0.4);
+            transition: all 0.3s ease;
+        }
+
+        .fullscreen-btn:hover {
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 8px 25px rgba(255,107,53,0.6);
+        }
+
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .dot:hover {
+            background: rgba(255,255,255,0.7);
+            transform: scale(1.3);
+        }
+
+        .dot.active {
+            background: #FF6B35;
+            border-color: white;
+            transform: scale(1.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Tela cheia">⛶</button>
+    
+    <div class="nav-dots" id="navDots"></div>
+
+    <div class="container">
+        <div class="slides-wrapper">
+        <!-- SLIDE 1: CAPA -->
+        <div class="slide active" data-slide="0">
+            <h1>🎯 DOMINANDO OBJEÇÕES</h1>
+            <h2>Técnicas Avançadas de Fechamento</h2>
+            <p style="font-size: 1.3em; margin-top: 30px;">Treinamento Refuturiza</p>
+            <p style="font-size: 1.1em; opacity: 0.9;">Saia do modo robô e feche mais vendas!</p>
+        </div>
+
+        <!-- SLIDE 2: O PROBLEMA -->
+        <div class="slide" data-slide="1">
+            <div class="slide-number">Slide 2</div>
+            <h2>❌ O Problema que Vamos Resolver</h2>
+            
+            <div class="erro-comum">
+                <h4>⚠️ Modo Robô</h4>
+                <p>Apenas oferecendo o produto sem engajamento real</p>
+            </div>
+
+            <div class="erro-comum">
+                <h4>⚠️ Desistir no Primeiro "Não"</h4>
+                <p>Aceitar objeções sem explorar alternativas</p>
+            </div>
+
+            <div class="erro-comum">
+                <h4>⚠️ Falta de Firmeza</h4>
+                <p>Não conduzir o cliente para a decisão</p>
+            </div>
+
+            <div class="highlight">
+                <p>💡 ESTATÍSTICA: 80% das vendas acontecem após o 5º contato, mas 44% dos vendedores desistem após o primeiro "não"!</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: MUDANÇA DE MINDSET -->
+        <div class="slide" data-slide="2">
+            <div class="slide-number">Slide 3</div>
+            <h2>🔥 Mudança de Mindset</h2>
+            
+            <h3>De: Vendedor Passivo</h3>
+            <ul>
+                <li>❌ "Então, não tem interesse?"</li>
+                <li>❌ "Tudo bem, qualquer coisa me avisa"</li>
+                <li>❌ "Sem problemas, fica para próxima"</li>
+            </ul>
+
+            <h3>Para: Consultor Assertivo</h3>
+            <ul>
+                <li>✅ "Entendo sua preocupação. Me conta mais sobre isso..."</li>
+                <li>✅ "Ótimo que trouxe essa questão! Vamos resolver juntos..."</li>
+                <li>✅ "Perfeito! Isso mostra que você está pensando estrategicamente..."</li>
+            </ul>
+
+            <div class="dica-box">
+                <h4>🎯 Regra de Ouro</h4>
+                <p>Toda objeção é uma oportunidade de aprofundar a conversa e entender melhor as necessidades do cliente!</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: CONHEÇA SEU PRODUTO -->
+        <div class="slide" data-slide="3">
+            <div class="slide-number">Slide 4</div>
+            <h2>📦 Conheça Profundamente o Produto</h2>
+            
+            <div class="produto-destaque">
+                <h3>PASSAPORTE REFUTURIZA</h3>
+                <ul>
+                    <li>Ferramenta de Orientação de Carreira</li>
+                    <li>Teste comportamental (DISC) com relatório completo</li>
+                    <li>Trilhas de Desenvolvimento e Empregabilidade</li>
+                    <li>Acesso ilimitado à vagas</li>
+                    <li>Acessos + 1300 cursos profissionalizantes</li>
+                    <li>Audiolivros, ebooks e conteúdos digitais</li>
+                    <li>+CASH: Educação financeira sem complicação</li>
+                </ul>
+                <div class="preco">R$ 14,99*</div>
+                <p class="nota">*Valor exclusivo para clientes cartão de TODOS</p>
+            </div>
+
+            <div class="highlight">
+                <p>💳 Pagamento: Cartão de crédito com cobranças mensais, SEM BLOQUEIO de limite!</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: OBJEÇÃO 1 -->
+        <div class="slide" data-slide="4">
+            <div class="slide-number">Slide 5</div>
+            <h2>🎭 Objeção #1: "Está Caro"</h2>
+            
+            <div class="objecao-box">
+                <h4>😰 Cliente diz: "Não tenho condições" / "Está muito caro"</h4>
+                
+                <div class="resposta">
+                    <strong>✅ RESPOSTA ASSERTIVA:</strong>
+                    <p>"Entendo perfeitamente sua preocupação com investimento. Posso te fazer uma pergunta? Quanto você acha que vale ter acesso a mais de 1.300 cursos profissionalizantes que podem aumentar seu salário?"</p>
+                    
+                    <p style="margin-top: 15px;"><strong>Depois da resposta do cliente:</strong></p>
+                    <p>"Exatamente! E aqui está o melhor: por menos de R$ 15 por mês - o valor de um lanche - você tem acesso a TUDO isso. São R$ 0,50 por dia para investir na sua carreira. Você concorda que sua evolução profissional vale muito mais que isso?"</p>
+                </div>
+            </div>
+
+            <div class="dica-box">
+                <h4>💪 Técnica: Quebrar em Micro-Valores</h4>
+                <p>R$ 14,99/mês = R$ 0,50/dia = Menos que um café. Faça a matemática com o cliente!</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: OBJEÇÃO 2 -->
+        <div class="slide" data-slide="5">
+            <div class="slide-number">Slide 6</div>
+            <h2>🎭 Objeção #2: "Vou Pensar"</h2>
+            
+            <div class="objecao-box">
+                <h4>🤔 Cliente diz: "Deixa eu pensar melhor" / "Vou ver depois"</h4>
+                
+                <div class="resposta">
+                    <strong>✅ RESPOSTA ASSERTIVA:</strong>
+                    <p>"Ótimo que você quer pensar! Isso mostra que você está levando a sério. Me ajuda aqui: o que especificamente você quer pensar melhor? É sobre o investimento, sobre quais cursos vai fazer primeiro, ou tem alguma dúvida que eu possa esclarecer agora?"</p>
+                    
+                    <p style="margin-top: 15px;"><strong>Após identificar a real objeção:</strong></p>
+                    <p>"Perfeito! Vamos resolver isso juntos agora. [resolver a objeção específica]. O que você acha de garantirmos sua vaga hoje e você já começa a usar imediatamente?"</p>
+                </div>
+            </div>
+
+            <div class="dica-box">
+                <h4>🎯 Técnica: Descubra a Objeção Real</h4>
+                <p>"Vou pensar" normalmente esconde outra objeção. Sua missão: descobrir qual!</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: OBJEÇÃO 3 -->
+        <div class="slide" data-slide="6">
+            <div class="slide-number">Slide 7</div>
+            <h2>🎭 Objeção #3: "Não Tenho Tempo"</h2>
+            
+            <div class="objecao-box">
+                <h4>⏰ Cliente diz: "Estou sem tempo para fazer cursos"</h4>
+                
+                <div class="resposta">
+                    <strong>✅ RESPOSTA ASSERTIVA:</strong>
+                    <p>"Entendo completamente! E justamente por isso o Passaporte é perfeito para você. Me responde uma coisa: você tem 15 minutos por dia no ônibus, no intervalo do almoço ou antes de dormir?"</p>
+                    
+                    <p style="margin-top: 15px;"><strong>Continua:</strong></p>
+                    <p>"Então! Nossos cursos são flexíveis - você assiste no seu ritmo, no seu tempo. Tem gente que faz 15 min por dia, tem gente que faz 2h no fim de semana. O importante é que você TENHA acesso quando puder usar. E outra: quanto tempo você acha que vai continuar sem tempo se não investir em sua carreira? O Passaporte é justamente para quem não tem tempo perder!"</p>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <p>⚡ Vire o jogo: mostre que NÃO ter o produto é que faz perder tempo!</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: OBJEÇÃO 4 -->
+        <div class="slide" data-slide="7">
+            <div class="slide-number">Slide 8</div>
+            <h2>🎭 Objeção #4: "Já Tenho Cursos Grátis"</h2>
+            
+            <div class="objecao-box">
+                <h4>🆓 Cliente diz: "Na internet tem curso grátis"</h4>
+                
+                <div class="resposta">
+                    <strong>✅ RESPOSTA ASSERTIVA:</strong>
+                    <p>"Verdade! Tem mesmo. Posso te perguntar uma coisa? Quantos desses cursos grátis você já completou e aplicou na prática?"</p>
+                    
+                    <p style="margin-top: 15px;"><strong>Após a resposta:</strong></p>
+                    <p>"Exatamente! Sabe por quê? Porque quando é grátis, a gente não valoriza. Mas o diferencial aqui não são só os cursos. É o teste DISC que te mostra QUAL caminho seguir, é a orientação de carreira, é ter tudo em um só lugar organizado, é o acesso às vagas exclusivas, é a educação financeira. É um ECOSSISTEMA completo. Você tá comparando uma Ferrari com uma bicicleta! Por R$ 0,50 centavos por dia, qual faz mais sentido?"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: TÉCNICAS DE FECHAMENTO -->
+        <div class="slide" data-slide="8">
+            <div class="slide-number">Slide 9</div>
+            <h2>💪 Técnicas de Fechamento Agressivo</h2>
+            
+            <h3>1. Fechamento por Assumir</h3>
+            <p>"Perfeito! Vou já separar seu acesso. Você prefere começar pelos cursos de [área] ou quer fazer primeiro o teste DISC?"</p>
+
+            <h3>2. Fechamento por Alternativa</h3>
+            <p>"Ótimo! Você quer ativar hoje ainda para já começar neste fim de semana, ou prefere deixar para ativar segunda e começar durante a semana?"</p>
+
+            <h3>3. Fechamento por Escassez</h3>
+            <p>"Esse valor promocional de R$ 14,99 é exclusivo para clientes do cartão TODOS e eu consigo garantir para você HOJE. Amanhã pode não ter mais essa condição. Vamos aproveitar?"</p>
+
+            <h3>4. Fechamento por Perda</h3>
+            <p>"Imagina daqui 6 meses você olhar para trás e ver que poderia ter feito 10 cursos, ter melhorado seu currículo, talvez até mudado de emprego... tudo por não ter investido R$ 0,50 por dia. Não faz sentido, né?"</p>
+
+            <div class="dica-box">
+                <h4>🎯 Importante!</h4>
+                <p>Assertividade ≠ Agressividade. Seja firme, mas sempre respeitoso e focado em ajudar!</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: REGRA DOS 3 NÃOS -->
+        <div class="slide" data-slide="9">
+            <div class="slide-number">Slide 10</div>
+            <h2>🔄 A Regra dos 3 "NÃOS"</h2>
+            
+            <div class="highlight">
+                <p>📊 NUNCA desista no primeiro "não"! Estatísticas mostram que você precisa superar pelo menos 3 objeções.</p>
+            </div>
+
+            <h3>Exemplo Prático:</h3>
+            
+            <div class="objecao-box">
+                <h4>1º NÃO: "Está caro"</h4>
+                <p>➜ Quebra em micro-valores + mostra benefícios</p>
+            </div>
+
+            <div class="objecao-box">
+                <h4>2º NÃO: "Vou pensar"</h4>
+                <p>➜ Descobre objeção real + resolve junto com cliente</p>
+            </div>
+
+            <div class="objecao-box">
+                <h4>3º NÃO: "Não tenho certeza"</h4>
+                <p>➜ Usa fechamento por perda + oferece garantia/benefício imediato</p>
+            </div>
+
+            <p style="margin-top: 30px; font-size: 1.3em; font-weight: 600; color: #FF6B35;">🎯 Lembre-se: Cada "não" te aproxima do "sim"!</p>
+        </div>
+
+        <!-- SLIDE 11: FRASES PODEROSAS -->
+        <div class="slide" data-slide="10">
+            <div class="slide-number">Slide 11</div>
+            <h2>💬 Frases Poderosas para Usar</h2>
+            
+            <ul>
+                <li><strong>"Posso te fazer uma pergunta?"</strong> - Mantém o cliente engajado</li>
+                <li><strong>"Entendo perfeitamente... e justamente por isso..."</strong> - Valida e redireciona</li>
+                <li><strong>"O que te impede de começar hoje?"</strong> - Direto ao ponto</li>
+                <li><strong>"Se eu resolver [objeção], fechamos agora?"</strong> - Compromisso</li>
+                <li><strong>"Me ajuda a entender..."</strong> - Descobre objeção real</li>
+                <li><strong>"Imagina daqui 6 meses..."</strong> - Projeção de futuro</li>
+                <li><strong>"Quanto tempo mais você vai esperar para..."</strong> - Senso de urgência</li>
+                <li><strong>"Por R$ 0,50 por dia, vale a pena arriscar não investir em você?"</strong> - Quebra resistência financeira</li>
+            </ul>
+
+            <div class="dica-box">
+                <h4>⚡ Dica de Ouro</h4>
+                <p>Use perguntas para conduzir o cliente à conclusão que VOCÊ quer. Não afirme, pergunte!</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 12: O QUE NÃO FAZER -->
+        <div class="slide" data-slide="11">
+            <div class="slide-number">Slide 12</div>
+            <h2>🚫 O Que NUNCA Fazer</h2>
+            
+            <div class="erro-comum">
+                <h4>❌ Aceitar o "não" passivamente</h4>
+                <p>"Tudo bem, qualquer coisa você me procura"</p>
+            </div>
+
+            <div class="erro-comum">
+                <h4>❌ Falar mal do concorrente ou curso grátis</h4>
+                <p>Foque nos SEUS diferenciais, não no que outros não têm</p>
+            </div>
+
+            <div class="erro-comum">
+                <h4>❌ Pressionar sem empatia</h4>
+                <p>"Ou você fecha agora ou perde a oportunidade!"</p>
+            </div>
+
+            <div class="erro-comum">
+                <h4>❌ Mentir ou exagerar</h4>
+                <p>Nunca invente benefícios que não existem</p>
+            </div>
+
+            <div class="erro-comum">
+                <h4>❌ Desistir sem tentar 3 vezes</h4>
+                <p>Lembre-se da regra dos 3 "nãos"!</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 13: PRÁTICA -->
+        <div class="slide" data-slide="12">
+            <div class="slide-number">Slide 13</div>
+            <h2>🎬 Hora de Praticar!</h2>
+            
+            <h3>Exercício em Duplas:</h3>
+            
+            <div class="highlight">
+                <p><strong>Pessoa A (Cliente):</strong> Usa uma das objeções abaixo</p>
+                <p><strong>Pessoa B (Vendedor):</strong> Aplica as técnicas aprendidas</p>
+            </div>
+
+            <h3>Cenários:</h3>
+            <ol>
+                <li>"Tá muito caro, não tenho esse dinheiro agora"</li>
+                <li>"Vou pensar melhor e te dou um retorno"</li>
+                <li>"Não tenho tempo para fazer cursos"</li>
+                <li>"Já vi cursos grátis no YouTube sobre isso"</li>
+                <li>"Minha situação tá difícil, não é prioridade agora"</li>
+            </ol>
+
+            <div class="dica-box">
+                <h4>📝 Objetivo</h4>
+                <p>Praticar pelo menos 3 tentativas de superação antes de "desistir" do fechamento</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 14: CHECKLIST -->
+        <div class="slide" data-slide="13">
+            <div class="slide-number">Slide 14</div>
+            <h2>✅ Checklist do Vendedor Campeão</h2>
+            
+            <div class="objecao-box">
+                <h4>Antes da Ligação:</h4>
+                <ul>
+                    <li>☐ Conheço todos os benefícios do produto</li>
+                    <li>☐ Tenho argumentos para as 5 principais objeções</li>
+                    <li>☐ Estou com energia e mentalidade positiva</li>
+                </ul>
+            </div>
+
+            <div class="objecao-box">
+                <h4>Durante a Negociação:</h4>
+                <ul>
+                    <li>☐ Escutei atentamente o cliente</li>
+                    <li>☐ Fiz perguntas para descobrir a real necessidade</li>
+                    <li>☐ Tentei superar pelo menos 3 objeções</li>
+                    <li>☐ Usei técnicas de fechamento</li>
+                    <li>☐ Fui assertivo mas respeitoso</li>
+                </ul>
+            </div>
+
+            <div class="objecao-box">
+                <h4>Após a Ligação:</h4>
+                <ul>
+                    <li>☐ Registrei o resultado e observações</li>
+                    <li>☐ Identifiquei o que posso melhorar</li>
+                    <li>☐ Celebrei as vitórias!</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SLIDE 15: FECHAMENTO -->
+        <div class="slide slide-capa" data-slide="14">
+            <div class="slide-number">Slide 15</div>
+            <h1>🚀 Agora é Com Vocês!</h1>
+            <h2>Lembre-se:</h2>
+            <div style="text-align: left; max-width: 700px; margin: 30px auto;">
+                <p style="font-size: 1.3em; margin: 20px 0;">✅ Seja consultivo, não robótico</p>
+                <p style="font-size: 1.3em; margin: 20px 0;">✅ Insista com inteligência</p>
+                <p style="font-size: 1.3em; margin: 20px 0;">✅ Cada "não" te aproxima do "sim"</p>
+                <p style="font-size: 1.3em; margin: 20px 0;">✅ Você está mudando vidas!</p>
+            </div>
+            <div class="highlight" style="margin-top: 50px;">
+                <p style="font-size: 1.4em; font-weight: 700;">💪 Bora fechar mais vendas!</p>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="navegacao">
+        <button class="btn-nav" id="prevBtn" onclick="previousSlide()">⬅️ Anterior</button>
+        <div class="slide-counter">
+            <span id="currentSlide">1</span> / <span id="totalSlides">15</span>
+        </div>
+        <button class="btn-nav" id="nextBtn" onclick="nextSlide()">Próximo ➡️</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const progressBar = document.getElementById('progressBar');
+        const navDots = document.getElementById('navDots');
+
+        // Criar dots de navegação
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = index === 0 ? 'dot active' : 'dot';
+            dot.onclick = () => goToSlide(index);
+            navDots.appendChild(dot);
+        });
+
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active', 'prev');
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else if (index < currentSlide) {
+                    slide.classList.add('prev');
+                }
+            });
+
+            // Atualizar progress bar
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            progressBar.style.width = progress + '%';
+
+            // Atualizar contador
+            document.getElementById('currentSlide').textContent = currentSlide + 1;
+            document.getElementById('totalSlides').textContent = totalSlides;
+
+            // Atualizar dots
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+
+            // Atualizar botões
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlide();
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Navegação por teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            } else if (e.key === 'f' || e.key === 'F') {
+                toggleFullscreen();
+            } else if (e.key === 'Home') {
+                goToSlide(0);
+            } else if (e.key === 'End') {
+                goToSlide(totalSlides - 1);
+            }
+        });
+
+        // Suporte a swipe em mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 50) {
+                previousSlide();
+            }
+        }
+
+        // Inicializar
+        updateSlide();
+    </script>
+</body>
+</html>
