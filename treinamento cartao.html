@@ -1,0 +1,546 @@
+import React, { useState } from 'react';
+import { ChevronRight, ChevronLeft, Phone, MessageCircle, Users, CheckCircle, TrendingUp, Heart, DollarSign, GraduationCap, Shield } from 'lucide-react';
+
+const ApresentacaoTreinamento = () => {
+  const [slideAtual, setSlideAtual] = useState(0);
+
+  const slides = [
+    {
+      titulo: "Treinamento de Vendas",
+      subtitulo: "Cartão de Todos",
+      icone: <TrendingUp className="w-16 h-16 text-blue-600" />,
+      conteudo: (
+        <div className="text-center space-y-6">
+          <p className="text-xl text-gray-700">Bem-vindo ao treinamento completo de vendas</p>
+          <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto mt-8">
+            <div className="bg-blue-50 p-4 rounded-lg">
+              <Phone className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+              <p className="font-semibold">Primeiro Contato</p>
+            </div>
+            <div className="bg-green-50 p-4 rounded-lg">
+              <MessageCircle className="w-8 h-8 text-green-600 mx-auto mb-2" />
+              <p className="font-semibold">Objeções</p>
+            </div>
+            <div className="bg-purple-50 p-4 rounded-lg">
+              <Users className="w-8 h-8 text-purple-600 mx-auto mb-2" />
+              <p className="font-semibold">Perguntas Abertas</p>
+            </div>
+            <div className="bg-orange-50 p-4 rounded-lg">
+              <CheckCircle className="w-8 h-8 text-orange-600 mx-auto mb-2" />
+              <p className="font-semibold">Fechamento</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      titulo: "O que é o Cartão de Todos?",
+      subtitulo: "Conhecendo o Produto",
+      icone: <Heart className="w-12 h-12 text-red-500" />,
+      conteudo: (
+        <div className="space-y-4">
+          <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded">
+            <p className="font-bold text-lg mb-2">⚠️ NÃO é plano de saúde!</p>
+            <p className="text-gray-700">É um cartão de descontos com acesso a rede de empresas conveniadas</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+            <div className="bg-white p-4 rounded-lg shadow">
+              <DollarSign className="w-8 h-8 text-green-600 mb-2" />
+              <h4 className="font-bold text-lg mb-2">Investimento</h4>
+              <p className="text-2xl font-bold text-green-600">R$ 33,40/mês</p>
+              <p className="text-sm text-gray-600 mt-1">Mensalidade fixa</p>
+            </div>
+            
+            <div className="bg-white p-4 rounded-lg shadow">
+              <Users className="w-8 h-8 text-blue-600 mb-2" />
+              <h4 className="font-bold text-lg mb-2">Dependentes</h4>
+              <p className="text-gray-700">Cônjuge + Filhos até 21 anos</p>
+              <p className="text-sm text-gray-600 mt-1">Sem custo adicional</p>
+            </div>
+          </div>
+          
+          <div className="bg-blue-50 p-4 rounded-lg mt-4">
+            <h4 className="font-bold mb-2">🌎 Cobertura Nacional</h4>
+            <p className="text-gray-700">Rede de conveniados em todo o Brasil</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      titulo: "Principais Benefícios",
+      subtitulo: "O que o cliente ganha",
+      icone: <CheckCircle className="w-12 h-12 text-green-500" />,
+      conteudo: (
+        <div className="space-y-3">
+          <div className="bg-gradient-to-r from-red-50 to-red-100 p-4 rounded-lg border border-red-200">
+            <div className="flex items-start gap-3">
+              <Heart className="w-6 h-6 text-red-600 flex-shrink-0 mt-1" />
+              <div>
+                <h4 className="font-bold text-lg mb-1">Saúde</h4>
+                <ul className="text-sm space-y-1 text-gray-700">
+                  <li>• Clínico Geral: R$ 30</li>
+                  <li>• Especialistas: R$ 40</li>
+                  <li>• Odontologia, exames e procedimentos com desconto</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-purple-50 to-purple-100 p-4 rounded-lg border border-purple-200">
+            <div className="flex items-start gap-3">
+              <GraduationCap className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
+              <div>
+                <h4 className="font-bold text-lg mb-1">Educação</h4>
+                <p className="text-sm text-gray-700">Cursos técnicos e online com descontos</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-green-50 to-green-100 p-4 rounded-lg border border-green-200">
+            <div className="flex items-start gap-3">
+              <DollarSign className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              <div>
+                <h4 className="font-bold text-lg mb-1">Cashback</h4>
+                <p className="text-sm text-gray-700">Dinheiro de volta em compras nos parceiros nacionais e locais</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-4 rounded-lg border border-blue-200">
+            <div className="flex items-start gap-3">
+              <Phone className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+              <div>
+                <h4 className="font-bold text-lg mb-1">App Completo</h4>
+                <p className="text-sm text-gray-700">Agendamento de consultas, leitura de notas fiscais, gestão de cashback</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-4 rounded-lg border border-gray-200">
+            <div className="flex items-start gap-3">
+              <Shield className="w-6 h-6 text-gray-600 flex-shrink-0 mt-1" />
+              <div>
+                <h4 className="font-bold text-lg mb-1">Auxílio Funerário</h4>
+                <p className="text-sm text-gray-700">Proteção para o titular do cartão</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      titulo: "Primeiro Contato - WhatsApp",
+      subtitulo: "Como abordar pelo digital",
+      icone: <MessageCircle className="w-12 h-12 text-green-500" />,
+      conteudo: (
+        <div className="space-y-4">
+          <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+            <h4 className="font-bold mb-2">✅ Regras de Ouro</h4>
+            <ul className="space-y-2 text-sm text-gray-700">
+              <li>• Seja cordial e use o nome da pessoa</li>
+              <li>• Vá direto ao ponto, mas sem ser invasivo</li>
+              <li>• Desperte curiosidade ao invés de despejar informações</li>
+              <li>• Sempre termine com uma pergunta</li>
+            </ul>
+          </div>
+          
+          <div className="bg-white p-4 rounded-lg border border-gray-200">
+            <h4 className="font-bold mb-3 text-green-600">📱 Exemplo de Abordagem</h4>
+            <div className="space-y-3 text-sm">
+              <div className="bg-green-100 p-3 rounded-lg">
+                <p className="font-semibold mb-1">Você:</p>
+                <p className="text-gray-800">"Olá [Nome]! Tudo bem? Meu nome é [Seu Nome], trabalho com o Cartão de Todos. Você já conhece?"</p>
+              </div>
+              
+              <div className="bg-gray-100 p-3 rounded-lg">
+                <p className="font-semibold mb-1">Cliente:</p>
+                <p className="text-gray-800">"Não, o que é?"</p>
+              </div>
+              
+              <div className="bg-green-100 p-3 rounded-lg">
+                <p className="font-semibold mb-1">Você:</p>
+                <p className="text-gray-800">"É um cartão que dá acesso a consultas médicas a partir de R$ 30, descontos em farmácias, cursos e ainda tem cashback. Você costuma gastar muito com saúde ou medicamentos?"</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-blue-50 p-3 rounded-lg">
+            <p className="text-sm font-semibold text-blue-800">💡 Dica: Adapte sua mensagem ao perfil do cliente. Se souber que tem filhos, fale sobre dependentes. Se for autônomo, fale sobre economia em saúde.</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      titulo: "Primeiro Contato - Presencial",
+      subtitulo: "Como abordar pessoalmente",
+      icone: <Users className="w-12 h-12 text-blue-500" />,
+      conteudo: (
+        <div className="space-y-4">
+          <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+            <h4 className="font-bold mb-2">✅ Pontos Importantes</h4>
+            <ul className="space-y-2 text-sm text-gray-700">
+              <li>• Sorria e tenha postura confiante</li>
+              <li>• Use linguagem corporal aberta</li>
+              <li>• Mantenha contato visual</li>
+              <li>• Seja breve na introdução</li>
+              <li>• Observe o momento da pessoa (se está com pressa, seja rápido)</li>
+            </ul>
+          </div>
+          
+          <div className="bg-white p-4 rounded-lg border border-gray-200">
+            <h4 className="font-bold mb-3 text-blue-600">🤝 Exemplo de Abordagem</h4>
+            <div className="space-y-3 text-sm">
+              <div className="bg-blue-100 p-3 rounded-lg">
+                <p className="font-semibold mb-1">Abertura:</p>
+                <p className="text-gray-800">"Oi, tudo bem? Me chamo [Seu Nome]. Você tem um minutinho? Queria te contar sobre algo que pode te economizar bastante dinheiro com saúde."</p>
+              </div>
+              
+              <div className="bg-gray-100 p-3 rounded-lg">
+                <p className="font-semibold mb-1">Se aceitar:</p>
+                <p className="text-gray-800">"Ótimo! Você sabia que é possível consultar com um médico por apenas R$ 30? Com o Cartão de Todos você tem isso e muito mais. Você costuma ir ao médico com frequência ou tem filhos?"</p>
+              </div>
+              
+              <div className="bg-blue-100 p-3 rounded-lg">
+                <p className="font-semibold mb-1">Se estiver com pressa:</p>
+                <p className="text-gray-800">"Sem problemas! Posso te mandar as informações no WhatsApp? Qual seu número?"</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-orange-50 p-3 rounded-lg">
+            <p className="text-sm font-semibold text-orange-800">⚠️ Nunca insista se a pessoa demonstrar desinteresse claro. Agradeça educadamente e siga em frente.</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      titulo: "A Importância das Perguntas Abertas",
+      subtitulo: "Descobrindo as necessidades do cliente",
+      icone: <MessageCircle className="w-12 h-12 text-purple-500" />,
+      conteudo: (
+        <div className="space-y-4">
+          <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+            <h4 className="font-bold mb-2">Por que perguntas abertas?</h4>
+            <ul className="space-y-2 text-sm text-gray-700">
+              <li>• Fazem o cliente falar sobre suas necessidades</li>
+              <li>• Revelam objeções antes que se tornem bloqueios</li>
+              <li>• Criam conexão e empatia</li>
+              <li>• Direcionam a venda para os benefícios certos</li>
+            </ul>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+              <h4 className="font-bold text-red-700 mb-2">❌ Perguntas Fechadas (Evite)</h4>
+              <ul className="text-sm space-y-1 text-gray-700">
+                <li>"Você quer o cartão?"</li>
+                <li>"Tem interesse?"</li>
+                <li>"Conhece o produto?"</li>
+              </ul>
+              <p className="text-xs text-red-600 mt-2 italic">Respostas: sim ou não (fecha conversa)</p>
+            </div>
+            
+            <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+              <h4 className="font-bold text-green-700 mb-2">✅ Perguntas Abertas (Use!)</h4>
+              <ul className="text-sm space-y-1 text-gray-700">
+                <li>"Como você cuida da saúde da sua família?"</li>
+                <li>"Quanto você gasta por mês com consultas?"</li>
+                <li>"O que mais te preocupa quando pensa em saúde?"</li>
+              </ul>
+              <p className="text-xs text-green-600 mt-2 italic">Respostas: detalhadas (abre conversa)</p>
+            </div>
+          </div>
+          
+          <div className="bg-white p-4 rounded-lg border border-gray-200">
+            <h4 className="font-bold mb-3 text-purple-600">💬 Sequência Ideal de Perguntas</h4>
+            <ol className="space-y-2 text-sm text-gray-700">
+              <li><span className="font-semibold">1.</span> "Você tem plano de saúde atualmente?"</li>
+              <li><span className="font-semibold">2.</span> "Como funciona quando você ou sua família precisa de atendimento?"</li>
+              <li><span className="font-semibold">3.</span> "Quanto você acaba gastando por mês com isso?"</li>
+              <li><span className="font-semibold">4.</span> "Se você pudesse economizar nisso, o que faria com esse dinheiro?"</li>
+            </ol>
+          </div>
+        </div>
+      )
+    },
+    {
+      titulo: "Contornando Objeções",
+      subtitulo: "Transformando 'não' em 'sim'",
+      icone: <Shield className="w-12 h-12 text-orange-500" />,
+      conteudo: (
+        <div className="space-y-3">
+          <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+            <h4 className="font-bold mb-2">🎯 Princípio Fundamental</h4>
+            <p className="text-sm text-gray-700">Objeções não são rejeições. São pedidos por mais informações ou tranquilização. Ouça, valide e responda com empatia.</p>
+          </div>
+          
+          <div className="space-y-3">
+            <div className="bg-white p-4 rounded-lg border border-gray-200">
+              <h4 className="font-bold text-red-600 mb-2">Objeção: "Eu já tenho plano de saúde"</h4>
+              <div className="bg-green-50 p-3 rounded mt-2">
+                <p className="text-sm font-semibold text-green-700 mb-1">Resposta:</p>
+                <p className="text-sm text-gray-800">"Que ótimo! O Cartão de Todos não substitui seu plano, ele complementa. É perfeito para aquelas consultas rápidas ou quando você não quer usar a carência do plano. Além disso, tem os descontos em farmácia e o cashback. Quanto você paga no seu plano atualmente?"</p>
+              </div>
+            </div>
+            
+            <div className="bg-white p-4 rounded-lg border border-gray-200">
+              <h4 className="font-bold text-red-600 mb-2">Objeção: "Está muito caro"</h4>
+              <div className="bg-green-50 p-3 rounded mt-2">
+                <p className="text-sm font-semibold text-green-700 mb-1">Resposta:</p>
+                <p className="text-sm text-gray-800">"Entendo sua preocupação. Vamos fazer uma conta: são R$ 33,40 por mês. Se você usar apenas UMA consulta de especialista (que custa R$ 40), já vale mais que o investimento. E você ainda tem acesso a todos os outros benefícios. Uma consulta particular custa quanto normalmente?"</p>
+              </div>
+            </div>
+            
+            <div className="bg-white p-4 rounded-lg border border-gray-200">
+              <h4 className="font-bold text-red-600 mb-2">Objeção: "Preciso pensar"</h4>
+              <div className="bg-green-50 p-3 rounded mt-2">
+                <p className="text-sm font-semibold text-green-700 mb-1">Resposta:</p>
+                <p className="text-sm text-gray-800">"Claro, é importante pensar bem! Me conta, o que especificamente você gostaria de avaliar melhor? É sobre o valor, os benefícios ou como funciona? Assim posso te ajudar a ter certeza da decisão."</p>
+              </div>
+            </div>
+            
+            <div className="bg-white p-4 rounded-lg border border-gray-200">
+              <h4 className="font-bold text-red-600 mb-2">Objeção: "Não uso muito médico"</h4>
+              <div className="bg-green-50 p-3 rounded mt-2">
+                <p className="text-sm font-semibold text-green-700 mb-1">Resposta:</p>
+                <p className="text-sm text-gray-800">"Que bom que você tem saúde! Mas o cartão não é só para médico. Tem o cashback que você pode usar nas compras do dia a dia, descontos em cursos, farmácia... E quando precisar de um médico, você já está protegido. É um investimento em prevenção e economia."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      titulo: "Encaminhando para o Fechamento",
+      subtitulo: "Sinais de compra e transição",
+      icone: <TrendingUp className="w-12 h-12 text-indigo-500" />,
+      conteudo: (
+        <div className="space-y-4">
+          <div className="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500">
+            <h4 className="font-bold mb-2">🎯 Sinais de que o cliente está pronto</h4>
+            <ul className="space-y-1 text-sm text-gray-700">
+              <li>• Faz perguntas sobre como funciona na prática</li>
+              <li>• Pergunta sobre formas de pagamento</li>
+              <li>• Menciona situações em que usaria</li>
+              <li>• Pergunta se pode incluir dependentes</li>
+              <li>• Demonstra interesse genuíno nos benefícios</li>
+            </ul>
+          </div>
+          
+          <div className="bg-white p-4 rounded-lg border border-gray-200">
+            <h4 className="font-bold mb-3 text-indigo-600">🔄 Técnicas de Transição</h4>
+            
+            <div className="space-y-3 text-sm">
+              <div className="bg-blue-50 p-3 rounded-lg">
+                <p className="font-semibold mb-1">1. Fechamento Presumido:</p>
+                <p className="text-gray-800">"Perfeito! Então vou precisar do seu CPF e um documento para fazer o cadastro. Você prefere pagar no débito ou crédito?"</p>
+              </div>
+              
+              <div className="bg-green-50 p-3 rounded-lg">
+                <p className="font-semibold mb-1">2. Resumo de Benefícios:</p>
+                <p className="text-gray-800">"Então recapitulando: você vai ter consultas a partir de R$ 30, descontos em farmácia, cashback e pode incluir sua família. Tudo isso por R$ 33,40 ao mês. Faz sentido pra você?"</p>
+              </div>
+              
+              <div className="bg-purple-50 p-3 rounded-lg">
+                <p className="font-semibold mb-1">3. Alternativa Limitada:</p>
+                <p className="text-gray-800">"Você prefere começar só no seu nome ou já quer incluir os dependentes?"</p>
+              </div>
+              
+              <div className="bg-orange-50 p-3 rounded-lg">
+                <p className="font-semibold mb-1">4. Urgência Suave:</p>
+                <p className="text-gray-800">"O cartão fica ativo em até 48 horas. Se você ativar hoje, já pode usar no final de semana se precisar. Vamos fazer seu cadastro?"</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-yellow-50 p-3 rounded-lg">
+            <p className="text-sm font-semibold text-yellow-800">💡 Lembre-se: Não tenha medo de pedir a venda. Se você apresentou bem e o cliente demonstrou interesse, é natural avançar para o fechamento.</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      titulo: "Fechamento da Venda",
+      subtitulo: "Finalizando com confiança",
+      icone: <CheckCircle className="w-12 h-12 text-green-600" />,
+      conteudo: (
+        <div className="space-y-4">
+          <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+            <h4 className="font-bold mb-2">✅ Passos para Fechar</h4>
+            <ol className="space-y-2 text-sm text-gray-700">
+              <li><span className="font-semibold">1.</span> Confirme todos os benefícios que interessam ao cliente</li>
+              <li><span className="font-semibold">2.</span> Tire dúvidas finais de forma confiante</li>
+              <li><span className="font-semibold">3.</span> Peça a venda de forma direta e positiva</li>
+              <li><span className="font-semibold">4.</span> Colete os dados necessários</li>
+              <li><span className="font-semibold">5.</span> Explique os próximos passos</li>
+            </ol>
+          </div>
+          
+          <div className="bg-white p-4 rounded-lg border border-gray-200">
+            <h4 className="font-bold mb-3 text-green-600">💬 Frases de Fechamento Eficazes</h4>
+            <div className="space-y-2 text-sm text-gray-700">
+              <p className="bg-green-50 p-2 rounded">"Então está decidido? Vou fazer seu cadastro agora mesmo!"</p>
+              <p className="bg-green-50 p-2 rounded">"Ótimo! Vamos começar com seus dados. Me passa seu CPF?"</p>
+              <p className="bg-green-50 p-2 rounded">"Perfeito! Em 48 horas você já está usando. Vamos finalizar?"</p>
+              <p className="bg-green-50 p-2 rounded">"Que legal que você gostou! Qual forma de pagamento você prefere?"</p>
+            </div>
+          </div>
+          
+          <div className="bg-blue-50 p-4 rounded-lg">
+            <h4 className="font-bold mb-2">📋 Informações Necessárias</h4>
+            <ul className="space-y-1 text-sm text-gray-700">
+              <li>• Nome completo</li>
+              <li>• CPF</li>
+              <li>• Data de nascimento</li>
+              <li>• Telefone e e-mail</li>
+              <li>• Endereço completo</li>
+              <li>• Dados dos dependentes (se houver)</li>
+              <li>• Forma de pagamento</li>
+            </ul>
+          </div>
+          
+          <div className="bg-purple-50 p-4 rounded-lg">
+            <h4 className="font-bold mb-2">🎉 Pós-Venda Imediato</h4>
+            <p className="text-sm text-gray-700 mb-2">Após fechar a venda:</p>
+            <ul className="space-y-1 text-sm text-gray-700">
+              <li>• Parabenize o cliente pela decisão inteligente</li>
+              <li>• Explique quando o cartão ficará ativo</li>
+              <li>• Mostre onde baixar o app</li>
+              <li>• Deixe seu contato para dúvidas</li>
+              <li>• Peça indicações: "Conhece alguém que também se beneficiaria?"</li>
+            </ul>
+          </div>
+          
+          <div className="bg-red-50 p-3 rounded-lg border-l-4 border-red-400">
+            <p className="text-sm font-semibold text-red-700">⚠️ NUNCA prometa o que o cartão não oferece. Seja honesto sobre ser um cartão de descontos e não um plano de saúde.</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      titulo: "Dicas Finais de Sucesso",
+      subtitulo: "O que faz a diferença",
+      icone: <TrendingUp className="w-12 h-12 text-yellow-500" />,
+      conteudo: (
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg border border-blue-200">
+              <h4 className="font-bold text-blue-700 mb-2">🎯 Mentalidade</h4>
+              <ul className="space-y-1 text-sm text-gray-700">
+                <li>• Acredite no produto</li>
+                <li>• Você está ajudando, não vendendo</li>
+                <li>• Cada "não" te aproxima do "sim"</li>
+                <li>• Seja persistente, mas respeitoso</li>
+              </ul>
+            </div>
+            
+            <div className="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg border border-green-200">
+              <h4 className="font-bold text-green-700 mb-2">💼 Preparação</h4>
+              <ul className="space-y-1 text-sm text-gray-700">
+                <li>• Conheça todos os benefícios</li>
+                <li>• Tenha materiais sempre à mão</li>
+                <li>• Pratique suas abordagens</li>
+                <li>• Esteja sempre atualizado</li>
+              </ul>
+            </div>
+            
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-lg border border-purple-200">
+              <h4 className="font-bold text-purple-700 mb-2">🗣️ Comunicação</h4>
+              <ul className="space-y-1 text-sm text-gray-700">
+                <li>• Ouça mais do que fala</li>
+                <li>• Adapte-se ao perfil do cliente</li>
+                <li>• Use histórias e exemplos reais</li>
+                <li>• Seja autêntico e transparente</li>
+              </ul>
+            </div>
+            
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-4 rounded-lg border border-orange-200">
+              <h4 className="font-bold text-orange-700 mb-2">📊 Acompanhamento</h4>
+              <ul className="space-y-1 text-sm text-gray-700">
+                <li>• Registre todos os contatos</li>
+                <li>• Faça follow-up dos interessados</li>
+                <li>• Peça feedback após vendas</li>
+                <li>• Cultive relacionamentos</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 p-4 rounded-lg border-l-4 border-yellow-500 mt-4">
+            <h4 className="font-bold text-yellow-800 mb-2">🌟 Lembre-se</h4>
+            <p className="text-sm text-gray-700">"Você não está apenas vendendo um cartão. Você está oferecendo acesso à saúde, economia e tranquilidade para famílias. Cada venda é uma vida que você está ajudando a melhorar!"</p>
+          </div>
+          
+          <div className="bg-green-600 text-white p-6 rounded-lg text-center mt-6">
+            <h3 className="text-2xl font-bold mb-2">Sucesso nas suas vendas! 🚀</h3>
+            <p className="text-sm">Pratique, acredite e conquiste seus objetivos!</p>
+          </div>
+        </div>
+      )
+    }
+  ];
+
+  const proximoSlide = () => {
+    if (slideAtual < slides.length - 1) {
+      setSlideAtual(slideAtual + 1);
+    }
+  };
+
+  const slideAnterior = () => {
+    if (slideAtual > 0) {
+      setSlideAtual(slideAtual - 1);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 md:p-8">
+      <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white">
+          <div className="flex items-center justify-center gap-4 mb-2">
+            {slides[slideAtual].icone}
+            <h1 className="text-3xl font-bold">{slides[slideAtual].titulo}</h1>
+          </div>
+          <p className="text-center text-blue-100">{slides[slideAtual].subtitulo}</p>
+        </div>
+        
+        <div className="p-8 min-h-[500px]">
+          {slides[slideAtual].conteudo}
+        </div>
+        
+        <div className="bg-gray-100 p-4 flex items-center justify-between">
+          <button
+            onClick={slideAnterior}
+            disabled={slideAtual === 0}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-all ${
+              slideAtual === 0
+                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                : 'bg-blue-600 text-white hover:bg-blue-700'
+            }`}
+          >
+            <ChevronLeft className="w-5 h-5" />
+            Anterior
+          </button>
+          
+          <div className="text-sm font-semibold text-gray-600">
+            Slide {slideAtual + 1} de {slides.length}
+          </div>
+          
+          <button
+            onClick={proximoSlide}
+            disabled={slideAtual === slides.length - 1}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-all ${
+              slideAtual === slides.length - 1
+                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                : 'bg-blue-600 text-white hover:bg-blue-700'
+            }`}
+          >
+            Próximo
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ApresentacaoTreinamento;
